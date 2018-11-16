@@ -22,7 +22,7 @@ npm install
 
 Rename `.env-example` to `.env` and add your credentials
 
-Want to save Markdown files? Set this flag to `true`
+### Want to save Markdown files? Set this flag to `true`
 ```yml
 SAVE_MARKDOWN_FILES=true
 ```
@@ -37,7 +37,7 @@ node index.js
 ```
 
 ## Results
-```json
+```yml
 [ { name: 'Remembering Roy Hargrove, Who Brought Jazz History Into Tomorrow',
     podcast: 'Popcast',
     image: 'https://static2.pocketcasts.com/discover/images/webp/200/24f9a050-1b0c-012e-006e-00163e1b201c.webp',
