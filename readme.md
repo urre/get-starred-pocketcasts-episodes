@@ -1,4 +1,4 @@
-# Get your starred podcasts episodes from Pocket Cast
+# Get your starred podcasts episodes from Pocket Casts
 
 ## What?
 
