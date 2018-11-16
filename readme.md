@@ -2,12 +2,13 @@
 
 ## What?
 
+### TL;DR
+I listen to podcacsts in Pocket Casts. I want to get my starred episodes and share what i listen to on my website. Work in progress.
+
 + Use [Puppeteer - Headless Chrome Node API](https://github.com/GoogleChrome/puppeteer) to get your starred podcast epiodes from Pocket Cast
 + Get podcast title, podcast, date, image status (played/not played)
 + Get results as JSON.
 + This script also converts the JSON to YAML, for using in static site generators like Jekyll, Gatsby etc.
-
-> Currently wip
 
 ## Requirements
 
