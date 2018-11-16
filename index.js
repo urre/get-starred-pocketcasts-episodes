@@ -1,6 +1,12 @@
 const puppeteer = require('puppeteer')
 const YAML = require('json2yaml')
+const empty = require('empty-folder')
+const jsonmarkdown = require('json-markdown')
+
+const fs = require('fs')
+const slugify = require('slugify')
 let yamlText = ''
+let saveMarkdownFiles = process.env.SAVE_MARKDOWN_FILES
 
 require('dotenv').config()
 
@@ -48,9 +54,10 @@ let getEpisodes = async () => {
 				).innerText
 
 				episodesJson.image = episode.querySelector('.small-image').src
-				episodesJson.date = episode.parentElement.parentElement.querySelector('.date-text').innerText
+				episodesJson.date = episode.parentElement.parentElement.querySelector(
+					'.date-text'
+				).innerText
 				episodesJson.played = played
-
 			} catch (exception) {}
 			episodes.push(episodesJson)
 		})
@@ -62,9 +69,27 @@ let getEpisodes = async () => {
 }
 
 getEpisodes().then(podcasts => {
-	yamlText = YAML.stringify({
-		podcasts
-	})
+	if (saveMarkdownFiles) {
+		empty('./podcasts', false, o => {
+			for (let pod of podcasts) {
+				let slug = `${slugify(pod.name, {
+					lower: true,
+					remove: /[*+~.()'"!:#@]/g
+				})}`
+				let outputFile = `./podcasts/${slug}.md`
 
-	console.log(yamlText)
+				fs.writeFile(outputFile, YAML.stringify({ pod }) + '---', function(
+					err
+				) {
+					if (err) {
+						return console.log(err)
+					}
+
+					console.log(`✅ Saved ${outputFile} !`)
+				})
+			}
+		})
+	} else {
+		console.log(podcasts)
+	}
 })
