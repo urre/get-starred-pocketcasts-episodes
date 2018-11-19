@@ -6,12 +6,12 @@ const jsonmarkdown = require('json-markdown')
 const fs = require('fs')
 const slugify = require('slugify')
 let yamlText = ''
-let saveMarkdownFiles = process.env.SAVE_MARKDOWN_FILES
 
 require('dotenv').config()
 
 const urlLogin = 'https://playbeta.pocketcasts.com/web/settings/account'
 const urlStarred = 'https://playbeta.pocketcasts.com/web/starred'
+let saveMarkdownFiles = process.env.SAVE_MARKDOWN_FILES
 
 let getEpisodes = async () => {
 	const browser = await puppeteer.launch({ headless: false })
@@ -69,9 +69,11 @@ let getEpisodes = async () => {
 }
 
 getEpisodes().then(podcasts => {
+	console.log(saveMarkdownFiles)
 	if (saveMarkdownFiles) {
 		empty('./podcasts', false, o => {
 			for (let pod of podcasts) {
+
 				let slug = `${slugify(pod.name, {
 					lower: true,
 					remove: /[*+~.()'"!:#@]/g
