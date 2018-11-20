@@ -81,6 +81,7 @@ node index.js
 - [x] Get starred podcasts
 - [x] Save as YML
 - [x] Save as Markdown
+- [x] Specify env variable for chosing output folder
 
 
 ## Author
