@@ -1,14 +1,11 @@
 {
   "name": "pocket-casts-sync",
   "version": "1.0.0",
-  "description": "",
+  "description": "Get your starred podcasts episodes from Pocket Casts using Puppeteer",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [podcasts],
+  "author": "Urban Sanden",
+  "license": "MIT",
   "dependencies": {
     "puppeteer": "^1.10.0"
   },

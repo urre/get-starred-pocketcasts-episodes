@@ -27,6 +27,12 @@ Rename `.env-example` to `.env` and add your credentials
 SAVE_MARKDOWN_FILES=true
 ```
 
+and for the folder, specify:
+
+```yml
+SAVE_MARKDOWN_FILES_FOLDER="/my/path"
+```
+
 ```shell
 cp .env-example .env
 ```

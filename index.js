@@ -11,7 +11,8 @@ require('dotenv').config()
 
 const urlLogin = 'https://playbeta.pocketcasts.com/web/settings/account'
 const urlStarred = 'https://playbeta.pocketcasts.com/web/starred'
-let saveMarkdownFiles = process.env.SAVE_MARKDOWN_FILES
+const saveMarkdownFiles = process.env.SAVE_MARKDOWN_FILES
+const saveMarkdownFilesFolder = process.env.SAVE_MARKDOWN_FILES_FOLDER
 
 let getEpisodes = async () => {
 	const browser = await puppeteer.launch({ headless: false })
@@ -71,14 +72,14 @@ let getEpisodes = async () => {
 getEpisodes().then(podcasts => {
 	console.log(saveMarkdownFiles)
 	if (saveMarkdownFiles) {
-		empty('./podcasts', false, o => {
+		empty(saveMarkdownFilesFolder, false, o => {
 			for (let pod of podcasts) {
 
 				let slug = `${slugify(pod.name, {
 					lower: true,
 					remove: /[*+~.()'"!:#@]/g
 				})}`
-				let outputFile = `./podcasts/${slug}.md`
+				let outputFile = `${saveMarkdownFilesFolder}/${slug}.md`
 
 				fs.writeFile(outputFile, YAML.stringify({ pod }) + '---', function(
 					err
