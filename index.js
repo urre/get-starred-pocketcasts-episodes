@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer')
 const YAML = require('json2yaml')
 const empty = require('empty-folder')
-const jsonmarkdown = require('json-markdown')
 
 const fs = require('fs')
 const slugify = require('slugify')
@@ -33,7 +32,8 @@ let getEpisodes = async () => {
 	)
 
 	await page.click('.login-form > .big-button')
-	await page.waitForSelector('.podcasts-content')
+	await page.waitFor(3000);
+
 	await page.goto(urlStarred)
 	await page.waitForSelector('.episode-table-cell')
 
