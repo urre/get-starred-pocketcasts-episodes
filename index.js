@@ -14,7 +14,7 @@ const saveMarkdownFiles = process.env.SAVE_MARKDOWN_FILES
 const saveMarkdownFilesFolder = process.env.SAVE_MARKDOWN_FILES_FOLDER
 
 let getEpisodes = async () => {
-	const browser = await puppeteer.launch({ headless: false })
+	const browser = await puppeteer.launch({ headless: true })
 	const page = await browser.newPage()
 	await page.setViewport({ width: 1280, height: 800 })
 
