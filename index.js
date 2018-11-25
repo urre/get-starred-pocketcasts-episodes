@@ -36,7 +36,6 @@ let getEpisodes = async () => {
 	await page.waitFor(3000);
 
 	await page.goto(urlStarred)
-	// await page.waitFor(3000)
 	await page.waitForSelector('.episode-table-cell')
 
 	await navigationPromise
