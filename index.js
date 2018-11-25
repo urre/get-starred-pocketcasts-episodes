@@ -14,14 +14,15 @@ const saveMarkdownFiles = process.env.SAVE_MARKDOWN_FILES
 const saveMarkdownFilesFolder = process.env.SAVE_MARKDOWN_FILES_FOLDER
 
 let getEpisodes = async () => {
-	const browser = await puppeteer.launch({ headless: true })
+	const browser = await puppeteer.launch({ headless: false })
 	const page = await browser.newPage()
 	await page.setViewport({ width: 1280, height: 800 })
 
 	const navigationPromise = page.waitForNavigation()
 
 	await page.goto(urlLogin, {
-		timeout: 3000000
+		timeout: 3000000,
+		waitUntil: 'networkidle2'
 	})
 
 	await page.waitForSelector('.login-form > .email > input')
@@ -35,6 +36,7 @@ let getEpisodes = async () => {
 	await page.waitFor(3000);
 
 	await page.goto(urlStarred)
+	// await page.waitFor(3000)
 	await page.waitForSelector('.episode-table-cell')
 
 	await navigationPromise
