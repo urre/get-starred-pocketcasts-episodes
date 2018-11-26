@@ -20,7 +20,11 @@ NodeJS
 npm install
 ```
 
-Rename `.env-example` to `.env` and add your credentials
+Copy `.env-example` to `.env` and add your credentials
+
+```shell
+cp .env-example .env
+```
 
 ### Want to save Markdown files? Set this flag to `true`
 ```yml
@@ -33,16 +37,12 @@ and for the folder, specify:
 SAVE_MARKDOWN_FILES_FOLDER="/my/path"
 ```
 
-```shell
-cp .env-example .env
-```
-
 ## Run
 ```shell
 node index.js
 ```
 
-## Results
+## Results when saving JSON
 ```yml
 [ { name: 'Remembering Roy Hargrove, Who Brought Jazz History Into Tomorrow',
     podcast: 'Popcast',
