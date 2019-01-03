@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer')
 const YAML = require('json2yaml')
 const empty = require('empty-folder')
-
 const fs = require('fs')
 const slugify = require('slugify')
 let yamlText = ''
@@ -33,7 +32,7 @@ let getEpisodes = async () => {
 	)
 
 	await page.click('.login-form > .big-button')
-	await page.waitFor(3000);
+	await page.waitFor(3000)
 
 	await page.goto(urlStarred)
 	await page.waitForSelector('.episode-table-cell')
@@ -75,7 +74,6 @@ getEpisodes().then(podcasts => {
 	if (saveMarkdownFiles) {
 		empty(saveMarkdownFilesFolder, false, o => {
 			for (let pod of podcasts) {
-
 				let slug = `${slugify(pod.name, {
 					lower: true,
 					remove: /[*+~.()'"!:#@]/g
